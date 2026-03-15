@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentoria Vestibular — Ale &amp; Hilária | Entre Mentoras</title>
+  <meta name="description" content="Aprovação no ENEM e UFSM com acompanhamento personalizado 1:1. Diagnóstico, plano de estudos e grupos de mentoria com Ale e Hilária.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mentoria Vestibular — Entre Mentoras">
+  <meta property="og:description" content="Aprovação no ENEM e UFSM com acompanhamento 1:1. Plano personalizado, grupos de estudo e suporte contínuo.">
+  <meta property="og:image" content="https://entrementorias.com.br/og-image.jpg"><!-- TODO: replace with real 1200x630px branded image before launch -->
+  <meta property="og:url" content="https://entrementorias.com.br">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mentoria Vestibular — Entre Mentoras">
+  <meta name="twitter:description" content="Aprovação no ENEM e UFSM com acompanhamento 1:1.">
+  <meta name="twitter:image" content="https://entrementorias.com.br/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%236B1A2A'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' font-family='serif' fill='%23C9954A'%3EE%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Fonts — preconnect BEFORE stylesheet (crossorigin required on gstatic for CORS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&display=swap">
+
+  <style>
+    /* === 1. TOKENS === */
+    :root {
+      /* --- 1a. PRIMITIVE RGB TRIPLETS (para rgba() composition) --- */
+      --clr-bordo-raw:   107 26 42;
+      --clr-dourado-raw: 201 149 74;
+      --clr-offwhite-raw: 250 247 244;
+
+      /* --- 1b. COLOR SEMANTIC TOKENS --- */
+      --clr-brand:       #6B1A2A;   /* bordô — cor primária da marca */
+      --clr-brand-dark:  #4A0F1C;   /* bordô escuro */
+      --clr-brand-mid:   #8C2438;   /* bordô médio */
+      --clr-brand-light: #F5E6E9;   /* bordô claro */
+      --clr-brand-rose:  #D4768A;   /* rosê */
+      --clr-accent:      #C9954A;   /* dourado — destaque/CTA */
+      --clr-accent-light:#F9EDD8;   /* dourado claro */
+      --clr-bg:          #FAF7F4;   /* off-white — fundo neutro */
+      --clr-text:        #1A1A1A;   /* texto principal */
+      --clr-text-muted:  #555555;   /* texto secundário */
+      --clr-surface:     #FFFFFF;   /* superfície de cards */
+
+      /* --- 1c. TYPOGRAPHY TOKENS --- */
+      --font-display: 'DM Serif Display', 'Georgia', serif;
+      --font-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+
+      /* Fluid type scale via clamp(min, preferred, max) */
+      --text-hero:    clamp(3rem, 2rem + 4vw, 3.5rem);      /* H1: 48-56px */
+      --text-h2:      clamp(1.75rem, 1rem + 3.5vw, 2.25rem); /* H2: 28-36px */
+      --text-h3:      clamp(1.25rem, 0.75rem + 2.5vw, 1.625rem); /* H3: 20-26px */
+      --text-body:    1.125rem;   /* 18px — corpo base */
+      --text-sm:      0.875rem;   /* 14px */
+      --text-caption: 0.75rem;    /* 12px */
+      --text-label:   0.9375rem;  /* 15px — labels/tags */
+
+      /* --- 1d. SPACING SCALE --- */
+      --space-xs:  0.25rem;  /*  4px */
+      --space-sm:  0.5rem;   /*  8px */
+      --space-md:  1rem;     /* 16px */
+      --space-lg:  2rem;     /* 32px */
+      --space-xl:  3rem;     /* 48px */
+      --space-2xl: 5rem;     /* 80px */
+
+      /* Section spacing — moderado 48-80px fluido */
+      --section-gap: clamp(3rem, 6vw, 5rem);
+
+      /* --- 1e. LAYOUT TOKENS --- */
+      --container-mobile:  480px;
+      --container-tablet:  720px;
+      --container-desktop: 1080px;
+      --nav-height:        56px;
+
+      /* --- 1f. BORDER & RADIUS --- */
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   16px;
+      --radius-xl:   24px;
+      --radius-pill: 999px;
+
+      /* --- 1g. SHADOW SCALE --- */
+      --shadow-card:  0 2px 16px rgba(107, 26, 42, 0.08);
+      --shadow-cta:   0 4px 24px rgba(201, 149, 74, 0.35);
+      --shadow-hover: 0 8px 32px rgba(107, 26, 42, 0.15);
+
+      /* --- 1h. TRANSITION TOKENS --- */
+      --transition-fast:   150ms ease;
+      --transition-base:   300ms ease;
+      --transition-slow:   600ms ease;
+      --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* === 2. RESET (Andy Bell Modern) === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-top: var(--nav-height);
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input, button, textarea, select {
+      font: inherit;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+
+    /* === 3. BASE TYPOGRAPHY === */
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      color: var(--clr-text);
+      background-color: var(--clr-bg);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      line-height: 1.15;
+      color: var(--clr-text);
+    }
+
+    h1 { font-size: var(--text-hero); }
+    h2 { font-size: var(--text-h2); }
+    h3 { font-size: var(--text-h3); }
+
+    p {
+      font-size: var(--text-body);
+      line-height: 1.65;
+      color: var(--clr-text-muted);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Base button reset — touch targets min 52px (FOUND-05 aplicado aqui globalmente) */
+    button, [role="button"] {
+      min-height: 52px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+    }
+
+    /* Stub para classe .btn — detalhada nas fases de componentes */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: var(--text-label);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--clr-accent);
+      color: var(--clr-brand-dark);
+      box-shadow: var(--shadow-cta);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 12px rgba(201, 149, 74, 0.25);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 3px solid var(--clr-accent);
+      outline-offset: 2px;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--clr-bg);
+      border: 2px solid var(--clr-bg);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(250, 247, 244, 0.1);
+    }
+
+    .btn-secondary:active {
+      background-color: rgba(250, 247, 244, 0.15);
+    }
+
+    .btn-secondary:focus-visible {
+      outline: 3px solid var(--clr-bg);
+      outline-offset: 2px;
+    }
+
+    small, .text-sm   { font-size: var(--text-sm); }
+    .text-caption     { font-size: var(--text-caption); }
+    .text-label       { font-size: var(--text-label); }
+    .text-muted       { color: var(--clr-text-muted); }
+
+    /* === 4. LAYOUT PRIMITIVES === */
+
+    /* Container: max-width responsivo, centrado, com padding lateral */
+    /* Mobile-first: base é --container-mobile (480px) */
+    .container {
+      width: 100%;
+      max-width: var(--container-mobile);
+      margin-inline: auto;
+      padding-inline: var(--space-md); /* 16px lateral padding em mobile, scales to 32px at tablet */
+    }
+
+    /* Section wrapper: espaçamento vertical + anchor offset para nav fixa */
+    .section {
+      padding-block: var(--section-gap);
+      scroll-margin-top: var(--nav-height); /* 56px — evita que nav fixa tape o início da seção ao fazer scroll por âncora */
+    }
+
+    /* Seções com fundo escuro (alternância de fundo — padrão da página) */
+    .section--dark {
+      background-color: var(--clr-brand-dark);
+      color: var(--clr-bg);
+    }
+
+    .section--dark h1,
+    .section--dark h2,
+    .section--dark h3 {
+      color: var(--clr-bg);
+    }
+
+    .section--dark p {
+      color: rgba(250, 247, 244, 0.80);
+    }
+
+    /* Grid helpers — usados em seções de conteúdo das fases 6-8 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    /* === 4b. SKIP LINK (a11y) === */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: var(--space-md);
+      z-index: 300;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--clr-accent);
+      color: var(--clr-brand-dark);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: top var(--transition-fast);
+    }
+
+    .skip-link:focus {
+      top: var(--space-sm);
+    }
+
+    /* === 5. NAV (Phase 2) === */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 100;
+      background: transparent;
+      transition: background-color var(--transition-base), box-shadow var(--transition-base);
+      will-change: background-color, box-shadow;
+    }
+
+    .site-nav.scrolled {
+      background-color: rgba(107, 26, 42, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height);
+    }
+
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--clr-brand);
+      text-decoration: none;
+      transition: color var(--transition-base);
+    }
+
+    .site-nav.scrolled .nav__logo {
+      color: var(--clr-bg);
+    }
+
+    .nav__logo:focus-visible {
+      outline: 2px solid var(--clr-accent);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    .nav__links {
+      display: none; /* hidden on mobile — CTA WhatsApp is primary action */
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .nav__link {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--clr-brand);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .site-nav.scrolled .nav__link {
+      color: rgba(250, 247, 244, 0.85);
+    }
+
+    .site-nav.scrolled .nav__link:hover {
+      color: var(--clr-bg);
+    }
+
+    .nav__link:hover {
+      color: var(--clr-accent);
+    }
+
+    .nav__link:focus-visible {
+      outline: 2px solid var(--clr-accent);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    .nav__cta {
+      min-height: 44px;
+      padding: 0.4rem 1.25rem;
+      font-size: var(--text-sm);
+    }
+
+    /* === 6. WHATSAPP FLOAT === */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      animation: floatIn 0.4s var(--transition-spring) 1s both;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.55);
+    }
+
+    .whatsapp-float:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    }
+
+    .whatsapp-float:focus-visible {
+      outline: 3px solid #25D366;
+      outline-offset: 3px;
+    }
+
+    /* === 7-17. COMPONENTS (added in phases 3-10) === */
+
+    /* === 7. HERO (Phase 3) === */
+    .hero {
+      min-height: calc(100vh - var(--nav-height));
+      min-height: max(calc(100dvh - var(--nav-height)), 500px);
+      background-color: var(--clr-brand-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+      padding-bottom: calc(var(--section-gap) + 5vw);
+    }
+
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-lg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-xs) var(--space-md);
+      border: 1px solid var(--clr-accent);
+      border-radius: var(--radius-pill);
+      color: var(--clr-accent);
+      font-size: var(--text-sm);
+      font-family: var(--font-body);
+      font-weight: 500;
+      background: transparent;
+    }
+
+    .hero__badge--scarcity {
+      border-color: rgba(250, 247, 244, 0.50);
+      color: rgba(250, 247, 244, 0.85);
+    }
+
+    .hero__title {
+      font-size: var(--text-hero);
+      color: var(--clr-bg);
+      line-height: 1.15;
+      max-width: 18ch;
+    }
+
+    .hero__subtitle {
+      font-size: var(--text-label);
+      color: rgba(250, 247, 244, 0.80);
+      max-width: 44ch;
+      line-height: 1.5;
+    }
+
+    .hero__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+    }
+
+    .hero__stats {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: var(--space-md);
+    }
+
+    .hero__stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .hero__stat-number {
+      font-family: var(--font-display);
+      font-size: 2.75rem;
+      color: var(--clr-accent);
+      line-height: 1;
+    }
+
+    .hero__stat-label {
+      font-size: var(--text-sm);
+      color: rgba(250, 247, 244, 0.70);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero__stat-divider {
+      width: 1px;
+      height: 2.5rem;
+      background-color: rgba(250, 247, 244, 0.25);
+      flex-shrink: 0;
+    }
+
+    /* Mentor avatars: ocultos por padrão (mobile-first) */
+    .hero__mentors {
+      display: none;
+    }
+
+    /* Stagger entrance — aplicada via JS com --hero-delay custom property por elemento */
+    .hero--animate {
+      animation: floatIn 0.5s var(--transition-spring) var(--hero-delay, 0ms) both;
+    }
+
+    .hero__mentor-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: var(--clr-brand-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--clr-accent);
+      user-select: none;
+    }
+
+    /* Canvas particle layer — behind hero content */
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* === 8. SOCIAL PROOF BAR (Phase 5) === */
+    .proof-bar {
+      background-color: var(--clr-brand);
+      padding-block: var(--space-md);
+    }
+
+    .proof-bar__track {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: var(--space-lg);
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      padding-inline: var(--space-lg);
+      /* Scrollbar hiding — tres propriedades obrigatorias para cross-browser */
+      scrollbar-width: none;          /* Firefox */
+      -ms-overflow-style: none;       /* IE 10+ — legacy, inofensivo */
+      scroll-snap-type: x mandatory;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+      mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+    }
+
+    .proof-bar__track::-webkit-scrollbar {
+      display: none;                  /* Chrome, Safari, Edge */
+    }
+
+    .proof-bar__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      flex-shrink: 0;                 /* Obrigatorio — impede compressao, mantém overflow */
+      scroll-snap-align: start;
+      color: var(--clr-bg);
+      font-size: var(--text-sm);
+      font-family: var(--font-body);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .proof-bar__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Separador · entre itens via CSS puro */
+    .proof-bar__item + .proof-bar__item::before {
+      content: '\00B7';
+      color: rgba(250, 247, 244, 0.40);
+      font-size: 1.25rem;
+      line-height: 1;
+      margin-right: var(--space-sm);
+      flex-shrink: 0;
+    }
+
+    /* === 9. PROBLEM SECTION (Phase 6) === */
+    .section__title {
+      font-family: var(--font-display);
+      font-size: var(--text-h2);
+      text-align: center;
+      margin-bottom: var(--space-sm);
+      color: var(--clr-text);
+    }
+
+    .section__subtitle {
+      font-size: var(--text-body);
+      text-align: center;
+      max-width: 56ch;
+      margin-inline: auto;
+      margin-bottom: var(--space-lg);
+      color: var(--clr-text-muted);
+    }
+
+    .section--accent {
+      background-color: var(--clr-surface);
+      border-top: 3px solid var(--clr-accent);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+      justify-content: center;
+    }
+
+    .problem-card {
+      background-color: var(--clr-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .problem-card__icon {
+      width: 48px;
+      height: 48px;
+      color: var(--clr-brand);
+    }
+
+    .problem-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      color: var(--clr-text);
+    }
+
+    .problem-card__desc {
+      font-size: var(--text-sm);
+      color: var(--clr-text-muted);
+      line-height: 1.6;
+    }
+
+    /* === 10. HOW IT WORKS SECTION (Phase 6) === */
+
+    /* Mobile: timeline vertical */
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-xl) 0 0;
+      display: flex;
+      flex-direction: column;
+      /* gap intencional ausente — espaçamento via padding-bottom em cada .step-item */
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: var(--space-md);
+      padding-bottom: var(--space-xl);
+      position: relative;
+    }
+
+    .step-item__marker {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Linha conectora vertical — estende-se pelo padding-bottom do step */
+    .step-item__marker::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      bottom: calc(-1 * var(--space-xl));
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background-color: rgba(201, 149, 74, 0.35);
+    }
+
+    /* Remove a linha abaixo do último step */
+    .step-item:last-child .step-item__marker::before {
+      display: none;
+    }
+
+    .step-item__number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--clr-accent);
+      color: var(--clr-brand-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.125rem;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .step-item__title {
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      color: var(--clr-bg);
+      margin-bottom: var(--space-xs);
+    }
+
+    .step-item__desc {
+      font-size: var(--text-sm);
+      color: rgba(250, 247, 244, 0.80);
+      line-height: 1.6;
+    }
+
+    /* === 11. MENTORS SECTION (Phase 7) === */
+    .mentors-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .mentor-card {
+      background-color: var(--clr-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      text-align: center;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .mentor-card__photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background-color: var(--clr-brand-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--clr-accent);
+      flex-shrink: 0;
+    }
+
+    .mentor-card__name {
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      color: var(--clr-text);
+      margin: 0;
+    }
+
+    .mentor-card__specialty {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--clr-brand);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+
+    .mentor-card__bio {
+      font-size: var(--text-sm);
+      color: var(--clr-text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .mentor-card__tags {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      justify-content: center;
+    }
+
+    .mentor-card__tag {
+      background-color: var(--clr-accent-light);
+      color: var(--clr-brand-dark);
+      font-size: var(--text-caption);
+      font-weight: 700;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+    }
+
+    /* === 12. VIDEO SECTION (Phase 7) === */
+    .video-container {
+      margin-top: var(--space-xl);
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .video-wrapper {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background-color: var(--clr-brand-mid);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-play {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background-color: rgba(201, 149, 74, 0.90);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-brand-dark);
+      flex-shrink: 0;
+    }
+
+    /* === 13. TESTIMONIALS SECTION (Phase 8) === */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .testimonial-card {
+      background-color: var(--clr-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      text-align: center;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .mentor-card:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .problem-card:focus-visible,
+    .mentor-card:focus-visible,
+    .testimonial-card:focus-visible {
+      outline: 3px solid var(--clr-brand);
+      outline-offset: 2px;
+    }
+
+    .testimonial-card__avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: var(--clr-brand-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--clr-accent);
+      flex-shrink: 0;
+    }
+
+    .testimonial-card__body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .testimonial-card__result {
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      color: var(--clr-brand);
+      margin: 0 0 var(--space-sm);
+      line-height: 1.3;
+    }
+
+    .testimonial-card__author {
+      font-size: var(--text-sm);
+      color: var(--clr-text-muted);
+      font-style: normal;
+    }
+
+    /* === 14. PRICING SECTION (Phase 8) === */
+    .pricing-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--space-xl);
+    }
+
+    .pricing-card {
+      background-color: var(--clr-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl) var(--space-lg);
+      /* Golden glow — var(--clr-accent) é hex #C9954A, usar valores literais */
+      box-shadow: 0 0 40px rgba(201, 149, 74, 0.3);
+      max-width: 520px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      text-align: center;
+    }
+
+    .pricing-card__badge {
+      background-color: var(--clr-accent);
+      color: var(--clr-brand-dark);
+      font-size: var(--text-caption);
+      font-weight: 700;
+      font-family: var(--font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-pill);
+      align-self: center;
+    }
+
+    .pricing-card__price {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .pricing-card__value {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+      color: var(--clr-text);
+      line-height: 1;
+    }
+
+    .pricing-card__per-day {
+      display: block;
+      font-size: var(--text-sm);
+      color: var(--clr-text-muted);
+    }
+
+    .pricing-card__features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      text-align: left;
+    }
+
+    .pricing-card__features li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      font-size: var(--text-body);
+      color: var(--clr-text);
+    }
+
+    .pricing-card__features li::before {
+      content: "✓";
+      color: var(--clr-accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .pricing-card__cta {
+      width: 100%;
+    }
+
+    /* === 18. UTILITY CLASSES (stubs in 01-03) === */
+    /* === 19. SCROLL-REVEAL STATES (added in phase 11) === */
+    .reveal,
+    .reveal-group > * {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 600ms ease-out, transform 600ms ease-out;
+      /* transition-delay set inline by JS for .reveal-group children */
+    }
+
+    .reveal.is-visible,
+    .reveal-group > *.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === 20. @KEYFRAMES (added in phases 3-4, 11) === */
+    @keyframes floatIn {
+      from {
+        transform: translateY(80px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(32px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    /* === 21. @MEDIA 768px (tablet) === */
+    @media (min-width: 768px) {
+      .container {
+        max-width: var(--container-tablet); /* 720px */
+        padding-inline: var(--space-lg); /* 32px — escalado de 16px mobile */
+      }
+
+      /* nav__links shown at 1024px+ to avoid crowding at tablet */
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Hero tablet */
+      .hero__content {
+        gap: var(--space-xl);
+      }
+
+      /* Problem section — tablet */
+      .problem-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* How It Works — desktop grid 2x2 */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+        flex-direction: unset;
+      }
+
+      .step-item {
+        padding-bottom: 0;
+      }
+
+      .step-item__marker::before {
+        display: none;
+      }
+
+      /* Mentors grid — 2 colunas */
+      .mentors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    /* === 22. @MEDIA 1024px (desktop) === */
+    @media (min-width: 1024px) {
+      .container {
+        max-width: var(--container-desktop); /* 1080px */
+      }
+
+      .nav__links {
+        display: flex;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      /* Problem section — desktop (6-col centered orphan row) */
+      .problem-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .problem-card {
+        grid-column: span 2;
+      }
+
+      .problem-card:nth-child(4) {
+        grid-column: 2 / span 2;
+      }
+
+      /* Testimonials — 3 columns on desktop */
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      /* Hero desktop — mentoras visíveis */
+      .hero__mentors {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        position: absolute;
+        right: var(--space-2xl);
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    /* === 15. FAQ ACCORDION === */
+    .faq__accordion {
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .faq__item {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .faq__item:first-child {
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .faq__trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: var(--space-md) 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      font-size: var(--text-body);
+      color: var(--clr-text);
+      gap: var(--space-md);
+      min-height: 52px;
+    }
+
+    .faq__question {
+      flex: 1;
+      font-weight: 500;
+    }
+
+    .faq__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--clr-brand);
+      color: var(--clr-bg);
+      font-size: 1.25rem;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .faq__trigger:focus-visible {
+      outline: 3px solid var(--clr-brand);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    .faq__trigger[aria-expanded="true"] .faq__icon {
+      transform: rotate(45deg);
+      background-color: var(--clr-accent);
+      color: var(--clr-text);
+    }
+
+    .faq__panel {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      padding-bottom: 0;
+      transition: max-height 300ms ease, opacity 200ms ease, padding-bottom 300ms ease;
+    }
+
+    .faq__panel.is-open {
+      max-height: 300px;
+      opacity: 1;
+      padding-bottom: var(--space-md);
+    }
+
+    .faq__answer {
+      color: var(--clr-text);
+      line-height: 1.7;
+    }
+    /* === 16. CTA FINAL (Phase 10) === */
+    .cta-final__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-lg);
+    }
+
+    .cta-final__scarcity {
+      font-size: var(--text-sm);
+      color: rgba(250, 247, 244, 0.70);
+      margin: 0;
+    }
+
+    /* === 17. FOOTER (Phase 10) === */
+    .site-footer {
+      background-color: var(--clr-brand-dark);
+      color: rgba(250, 247, 244, 0.75);
+      padding-block: var(--space-xl);
+    }
+
+    .site-footer__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-sm);
+    }
+
+    .site-footer__brand {
+      font-family: var(--font-display);
+      font-size: var(--text-body);
+      color: var(--clr-bg);
+      margin: 0;
+    }
+
+    .site-footer__contact,
+    .site-footer__copy {
+      font-size: var(--text-sm);
+      color: rgba(250, 247, 244, 0.65);
+      margin: 0;
+    }
+
+    .site-footer__contact a {
+      color: var(--clr-accent);
+      text-decoration: underline;
+    }
+
+    .site-footer__contact a:focus-visible {
+      outline: 2px solid var(--clr-accent);
+      outline-offset: 2px;
+    }
+
+    /* ⚠️ ALWAYS INSERT NEW CSS ABOVE THIS LINE ⚠️ */
+    /* === 23. REDUCED MOTION — ALWAYS LAST === */
+    /* WCAG 2.3.3 — disables all animations for users who prefer reduced motion */
+    /* !important is intentional: overrides all component and animation CSS above */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Ir ao conteúdo principal</a>
+  <nav class="site-nav" id="site-nav" role="navigation" aria-label="Navegacao principal">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo">Entre Mentoras</a>
+      <ul class="nav__links" role="list">
+        <li><a href="#problema" class="nav__link">Problema</a></li>
+        <li><a href="#como-funciona" class="nav__link">Como funciona</a></li>
+        <li><a href="#mentoras" class="nav__link">Mentoras</a></li>
+        <li><a href="#preco" class="nav__link">Preço</a></li>
+        <li><a href="#faq" class="nav__link">FAQ</a></li>
+      </ul>
+      <!-- TODO: replace 5500000000000 with real number before deploy — managed via APP_CONFIG.whatsappNumber -->
+      <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20mentoria%21"
+         class="btn btn-primary nav__cta"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Falar no WhatsApp">WhatsApp</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="hero section--dark" id="hero" aria-label="Hero — Mentoria Vestibular">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__content container">
+
+        <!-- Badge -->
+        <div class="hero__badge" data-hero-animate>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+          Mentoria para Vestibular
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero__title" data-hero-animate>
+          Passe na UFSM com quem já passou
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="hero__subtitle" data-hero-animate>
+          Mentoria personalizada para o ENEM e UFSM no Sul do Brasil.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero__ctas" data-hero-animate>
+          <!-- TODO: replace 5500000000000 with real number before deploy — managed via APP_CONFIG.whatsappNumber -->
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20mentoria%21"
+             class="btn btn-primary"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Falar no WhatsApp sobre mentoria">
+            Falar no WhatsApp
+          </a>
+          <a href="#como-funciona" class="btn btn-secondary">
+            Ver como funciona ↓
+          </a>
+        </div>
+
+        <!-- Scarcity badge — CONV-02 -->
+        <span class="hero__badge hero__badge--scarcity" data-hero-animate>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          Vagas Limitadas
+        </span>
+
+        <!-- Stats block -->
+        <div class="hero__stats" data-hero-animate>
+          <div class="hero__stat">
+            <span class="hero__stat-number">+120</span>
+            <span class="hero__stat-label">Aprovados</span>
+          </div>
+          <div class="hero__stat-divider" aria-hidden="true"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-number">94%</span>
+            <span class="hero__stat-label">Taxa de Aprovação</span>
+          </div>
+          <div class="hero__stat-divider" aria-hidden="true"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-number">5+</span>
+            <span class="hero__stat-label">Anos de Experiência</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mentor placeholders — visíveis apenas em desktop via CSS -->
+      <div class="hero__mentors" aria-hidden="true">
+        <div class="hero__mentor-avatar">A</div>
+        <div class="hero__mentor-avatar">H</div>
+      </div>
+    </section>
+
+    <!-- Social Proof Bar — Phase 5 -->
+    <div class="proof-bar" role="region" aria-label="Indicadores da mentoria">
+      <div class="proof-bar__track">
+        <div class="proof-bar__item">
+          <span class="proof-bar__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+            </svg>
+          </span>
+          <span class="proof-bar__text">+120 Aprovações</span>
+        </div>
+        <div class="proof-bar__item">
+          <span class="proof-bar__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </span>
+          <span class="proof-bar__text">Foco UFSM</span>
+        </div>
+        <div class="proof-bar__item">
+          <span class="proof-bar__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
+            </svg>
+          </span>
+          <span class="proof-bar__text">Especialistas em ENEM</span>
+        </div>
+        <div class="proof-bar__item">
+          <span class="proof-bar__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          <span class="proof-bar__text">Atendimento 1:1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 6: Problema -->
+    <section class="section section--accent" id="problema" aria-labelledby="problema-titulo">
+      <div class="container">
+        <h2 id="problema-titulo" class="section__title reveal">Você se reconhece nisso?</h2>
+        <p class="section__subtitle reveal">Dores comuns de quem está se preparando para o vestibular</p>
+        <div class="problem-grid reveal-group">
+
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/>
+              </svg>
+            </div>
+            <h3 class="problem-card__title">Não sabe por onde começar</h3>
+            <p class="problem-card__desc">Com tantas matérias e pouco tempo, fica difícil montar um plano de estudos eficiente sem ajuda.</p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+            </div>
+            <h3 class="problem-card__title">Estuda muito, mas a nota não sobe</h3>
+            <p class="problem-card__desc">Horas e horas de estudo sem resultados — falta método, não esforço.</p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+              </svg>
+            </div>
+            <h3 class="problem-card__title">Dificuldade com a redação do ENEM</h3>
+            <p class="problem-card__desc">A estrutura dissertativo-argumentativa trava na hora H — e a nota de redação puxa tudo para baixo.</p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/>
+              </svg>
+            </div>
+            <h3 class="problem-card__title">Estuda sozinho sem feedback real</h3>
+            <p class="problem-card__desc">Sem alguém para corrigir e orientar, os mesmos erros se repetem de simulado em simulado.</p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3 class="problem-card__title">Ansiedade e bloqueio na hora da prova</h3>
+            <p class="problem-card__desc">O conteúdo está na cabeça, mas na hora da prova o branco bate e o tempo escorrega.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 6: Como Funciona -->
+    <section class="section section--dark" id="como-funciona" aria-labelledby="como-funciona-titulo">
+      <div class="container">
+        <h2 id="como-funciona-titulo" class="section__title reveal">Como funciona</h2>
+        <p class="section__subtitle reveal">Quatro etapas do diagnóstico à aprovação</p>
+        <ol class="steps reveal-group" aria-label="Etapas da mentoria">
+
+          <li class="step-item">
+            <div class="step-item__marker">
+              <span class="step-item__number" aria-hidden="true">1</span>
+            </div>
+            <div class="step-item__content">
+              <h3 class="step-item__title">Diagnóstico 1:1</h3>
+              <p class="step-item__desc">Entendemos seu ponto de partida, suas metas e as lacunas que estão impedindo sua evolução.</p>
+            </div>
+          </li>
+
+          <li class="step-item">
+            <div class="step-item__marker">
+              <span class="step-item__number" aria-hidden="true">2</span>
+            </div>
+            <div class="step-item__content">
+              <h3 class="step-item__title">Plano de estudos</h3>
+              <p class="step-item__desc">Criamos um cronograma personalizado focado nos conteúdos que mais caem na sua prova-alvo.</p>
+            </div>
+          </li>
+
+          <li class="step-item">
+            <div class="step-item__marker">
+              <span class="step-item__number" aria-hidden="true">3</span>
+            </div>
+            <div class="step-item__content">
+              <h3 class="step-item__title">Grupos de estudo</h3>
+              <p class="step-item__desc">Participe de grupos com outros alunos para resolver questões, discutir redações e se manter motivado.</p>
+            </div>
+          </li>
+
+          <li class="step-item">
+            <div class="step-item__marker">
+              <span class="step-item__number" aria-hidden="true">4</span>
+            </div>
+            <div class="step-item__content">
+              <h3 class="step-item__title">Acompanhamento contínuo</h3>
+              <p class="step-item__desc">Revisamos seu desempenho, ajustamos o plano e garantimos que você chegue à prova preparado e confiante.</p>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- MENTORAS (Phase 7 — CONT-04, CONT-05) -->
+    <section class="section" id="mentoras" aria-labelledby="mentoras-titulo">
+      <div class="container">
+        <h2 id="mentoras-titulo" class="section__title reveal">Suas mentoras</h2>
+        <p class="section__subtitle reveal">Quem vai te guiar até a aprovação</p>
+        <div class="mentors-grid reveal-group">
+
+          <article class="mentor-card">
+            <div class="mentor-card__photo" aria-hidden="true">A</div>
+            <div class="mentor-card__body">
+              <h3 class="mentor-card__name">Ale</h3>
+              <p class="mentor-card__specialty">Redação &amp; Ciências Humanas</p>
+              <p class="mentor-card__bio">Professora com anos de experiência preparando estudantes para o ENEM e vestibulares. Especialista em redação dissertativo-argumentativa e nas disciplinas de Humanas.</p>
+              <ul class="mentor-card__tags" aria-label="Áreas de especialidade de Ale">
+                <li class="mentor-card__tag">Redação ENEM</li>
+                <li class="mentor-card__tag">História</li>
+                <li class="mentor-card__tag">Geografia</li>
+                <li class="mentor-card__tag">Filosofia</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="mentor-card">
+            <div class="mentor-card__photo" aria-hidden="true">H</div>
+            <div class="mentor-card__body">
+              <h3 class="mentor-card__name">Hilária</h3>
+              <p class="mentor-card__specialty">Exatas &amp; Ciências da Natureza</p>
+              <p class="mentor-card__bio">Mentora focada em Matemática, Física e Química, com método personalizado de diagnóstico e plano de estudos que acelera os resultados de cada aluno.</p>
+              <ul class="mentor-card__tags" aria-label="Áreas de especialidade de Hilária">
+                <li class="mentor-card__tag">Matemática</li>
+                <li class="mentor-card__tag">Física</li>
+                <li class="mentor-card__tag">Química</li>
+                <li class="mentor-card__tag">Biologia</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO (Phase 7 — CONT-06) -->
+    <section class="section section--dark" id="video" aria-labelledby="video-titulo">
+      <div class="container">
+        <h2 id="video-titulo" class="section__title reveal">Veja como é a mentoria</h2>
+        <p class="section__subtitle reveal">Em breve — acompanhe de perto como transformamos estudantes em aprovados</p>
+        <div class="video-container reveal">
+          <div class="video-wrapper" role="img" aria-label="Player de vídeo sobre a mentoria (em breve)">
+            <div class="video-play" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"
+                   fill="currentColor" aria-hidden="true" focusable="false">
+                <polygon points="5,3 19,12 5,21"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS (Phase 8 — CONT-08) -->
+    <section class="section" id="depoimentos" aria-labelledby="depoimentos-titulo">
+      <div class="container">
+        <h2 id="depoimentos-titulo" class="section__title reveal">O que dizem nossos alunos</h2>
+        <p class="section__subtitle reveal">Resultados reais de quem apostou na mentoria</p>
+        <div class="testimonials-grid reveal-group">
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__avatar" aria-hidden="true">M</div>
+            <blockquote class="testimonial-card__body">
+              <p class="testimonial-card__result">Aprovada em Medicina na USP</p>
+              <footer class="testimonial-card__author">
+                <span>Maria S. — SP</span>
+              </footer>
+            </blockquote>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__avatar" aria-hidden="true">L</div>
+            <blockquote class="testimonial-card__body">
+              <p class="testimonial-card__result">Passei em Direito na USP</p>
+              <footer class="testimonial-card__author">
+                <span>Lucas M. — MG</span>
+              </footer>
+            </blockquote>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__avatar" aria-hidden="true">A</div>
+            <blockquote class="testimonial-card__body">
+              <p class="testimonial-card__result">Engenharia na Unicamp</p>
+              <footer class="testimonial-card__author">
+                <span>Ana B. — RS</span>
+              </footer>
+            </blockquote>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="preco" aria-labelledby="preco-titulo">
+      <div class="container">
+        <h2 id="preco-titulo" class="section__title reveal">Invista na sua aprovação</h2>
+        <p class="section__subtitle reveal">Um plano completo, com suporte real do início ao vestibular</p>
+
+        <div class="pricing-wrapper">
+          <div class="pricing-card reveal">
+
+            <span class="pricing-card__badge">Mais Procurado</span>
+
+            <div class="pricing-card__price">
+              <span class="pricing-card__value">R$ 1.997</span>
+              <span class="pricing-card__per-day">menos de R$6/dia</span>
+            </div>
+
+            <ul class="pricing-card__features" aria-label="O que está incluído">
+              <li>Aulas ao vivo semanais</li>
+              <li>Grupos de estudo por área</li>
+              <li>Plantões de dúvidas</li>
+              <li>Material didático exclusivo</li>
+              <li>Simulações comentadas</li>
+              <li>Acompanhamento individual</li>
+            </ul>
+
+            <!-- TODO: replace 5500000000000 with real number before deploy — managed via APP_CONFIG.whatsappNumber -->
+            <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20mentoria%21"
+               class="btn btn-primary pricing-card__cta"
+               target="_blank" rel="noopener noreferrer">
+              Quero minha vaga no WhatsApp
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- === FAQ (Phase 9) === -->
+    <section id="faq" class="section section--accent" aria-labelledby="faq-titulo">
+      <div class="container">
+        <h2 id="faq-titulo" class="section__title reveal">Perguntas Frequentes</h2>
+        <p class="section__subtitle reveal">Tire suas dúvidas antes de falar com a gente</p>
+        <div class="faq__accordion reveal">
+
+          <div class="faq__item">
+            <button class="faq__trigger" aria-expanded="true" aria-controls="faq-panel-1">
+              <span class="faq__question">Preciso estudar muito para participar?</span>
+              <span class="faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__panel is-open" id="faq-panel-1" role="region">
+              <p class="faq__answer">Não. A mentoria é adaptada ao nível atual do aluno, com diagnóstico individual no início.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__trigger" aria-expanded="false" aria-controls="faq-panel-2">
+              <span class="faq__question">Como funcionam os grupos de estudo?</span>
+              <span class="faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__panel" id="faq-panel-2" role="region" hidden>
+              <p class="faq__answer">Os grupos são organizados por área de conhecimento (exatas, humanas, biológicas) com encontros semanais ao vivo.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__trigger" aria-expanded="false" aria-controls="faq-panel-3">
+              <span class="faq__question">E se eu não conseguir acompanhar o ritmo?</span>
+              <span class="faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__panel" id="faq-panel-3" role="region" hidden>
+              <p class="faq__answer">Há plantões de dúvidas semanais e acompanhamento individual para quem precisar de atenção extra.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__trigger" aria-expanded="false" aria-controls="faq-panel-4">
+              <span class="faq__question">Qual é a diferença para um curso online?</span>
+              <span class="faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__panel" id="faq-panel-4" role="region" hidden>
+              <p class="faq__answer">A mentoria oferece feedback real e personalizado, diferente de videoaulas gravadas sem interação.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__trigger" aria-expanded="false" aria-controls="faq-panel-5">
+              <span class="faq__question">Como entro em contato para contratar?</span>
+              <span class="faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__panel" id="faq-panel-5" role="region" hidden>
+              <p class="faq__answer">Basta clicar no botão do WhatsApp. Respondemos em até 24h e explicamos todos os detalhes da turma atual.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- === CTA FINAL (Phase 10 — CTA-01) === -->
+    <section class="section section--dark cta-final" id="cta-final" aria-labelledby="cta-final-titulo">
+      <div class="container cta-final__inner">
+        <h2 id="cta-final-titulo" class="section__title reveal">Garanta sua vaga agora</h2>
+        <p class="section__subtitle reveal">Turmas com vagas limitadas — acompanhamento individual exige tamanho reduzido</p>
+        <!-- TODO: replace 5500000000000 with real number before deploy — managed via APP_CONFIG.whatsappNumber -->
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20garantir%20minha%20vaga%21"
+           class="btn btn-primary"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Falar no WhatsApp para garantir sua vaga na mentoria">
+          Falar no WhatsApp
+        </a>
+        <p class="cta-final__scarcity">Vagas limitadas — turma atual com poucos lugares disponíveis</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- === FOOTER (Phase 10 — CTA-02) === -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+      <p class="site-footer__brand">Entre Mentoras</p>
+      <p class="site-footer__contact">
+        <!-- TODO: replace 5500000000000 with real number before deploy — managed via APP_CONFIG.whatsappNumber -->
+        Contato: <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </p>
+      <p class="site-footer__copy">&copy; 2026 Entre Mentoras. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- TODO: replace 5500000000000 with real number before deploy — managed via APP_CONFIG.whatsappNumber -->
+  <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20mentoria%21"
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Falar no WhatsApp pelo botao flutuante">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true" focusable="false">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.12 1.524 5.855L.057 23.625a.75.75 0 0 0 .918.919l5.85-1.468A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.707 9.707 0 0 1-4.952-1.353l-.355-.21-3.674.921.937-3.591-.231-.371A9.716 9.716 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
+    </svg>
+  </a>
+
+  <script>
+    const APP_CONFIG = {
+      whatsappNumber: '5500000000000', /* TODO: replace 5500000000000 with real WhatsApp number before deploy */
+      whatsappMessage: encodeURIComponent('Olá, tenho interesse na mentoria!')
+    };
+
+    /* prefers-reduced-motion JS stub — referenced by Phase 4 (canvas) and Phase 11 (animations) */
+    const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* === NAV SCROLL STATE (Phase 2) === */
+    (function () {
+      var nav = document.getElementById('site-nav');
+      if (!nav) return;
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+    }());
+
+    /* === HERO ENTRANCE ANIMATION (Phase 3) === */
+    (function () {
+      if (REDUCED_MOTION) return;
+      var items = document.querySelectorAll('[data-hero-animate]');
+      items.forEach(function (el, i) {
+        el.style.setProperty('--hero-delay', (100 + i * 120) + 'ms');
+        el.classList.add('hero--animate');
+      });
+    }());
+
+    /* === PARTICLES MODULE (Phase 4 — 04-01) === */
+    (function () {
+      if (REDUCED_MOTION) return;
+
+      var canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+
+      var PARTICLE_COUNT = window.innerWidth >= 1024 ? 65 : 35;
+      var DPR = Math.min(window.devicePixelRatio || 1, 2);
+      var W, H;
+
+      function resize() {
+        var rect = canvas.parentElement.getBoundingClientRect();
+        W = rect.width;
+        H = rect.height;
+        canvas.width  = Math.round(W * DPR);
+        canvas.height = Math.round(H * DPR);
+        canvas.style.width  = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.scale(DPR, DPR);
+      }
+
+      var COLORS = ['rgba(201,149,74,', 'rgba(212,118,138,'];
+      var particles = [];
+
+      function spawn() {
+        particles = [];
+        for (var i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: 1.5 + Math.random() * 2,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: -0.1 - Math.random() * 0.2,
+            alpha: 0.15 + Math.random() * 0.35,
+            color: COLORS[Math.floor(Math.random() * COLORS.length)]
+          });
+        }
+      }
+
+      var rafId = null;
+
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.y + p.r < 0) { p.y = H + p.r; p.x = Math.random() * W; }
+          if (p.x < -p.r)    { p.x = W + p.r; }
+          if (p.x > W + p.r) { p.x = -p.r; }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.alpha + ')';
+          ctx.fill();
+        }
+        rafId = requestAnimationFrame(tick);
+      }
+
+      var debounceTimer = null;
+      window.addEventListener('resize', function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+          resize();
+          spawn();
+        }, 200);
+      });
+
+      resize();
+      spawn();
+      tick();
+
+      window._particlesRAF = {
+        get:  function () { return rafId; },
+        set:  function (id) { rafId = id; },
+        tick: tick,
+        stop: function () { cancelAnimationFrame(rafId); rafId = null; }
+      };
+    }());
+
+    /* === CANVAS LIFECYCLE (Phase 4 — 04-02) === */
+    (function () {
+      if (REDUCED_MOTION) return;
+      var raf = window._particlesRAF;
+      if (!raf) return;
+
+      var pageVisible = true;
+      var heroVisible = true;
+
+      function update() {
+        var shouldRun = pageVisible && heroVisible;
+        if (shouldRun && !raf.get()) {
+          raf.tick();
+        } else if (!shouldRun && raf.get()) {
+          raf.stop();
+        }
+      }
+
+      document.addEventListener('visibilitychange', function () {
+        pageVisible = document.visibilityState === 'visible';
+        update();
+      });
+
+      var hero = document.getElementById('hero');
+      if (hero && typeof IntersectionObserver !== 'undefined') {
+        new IntersectionObserver(function (entries) {
+          heroVisible = entries[0].isIntersecting;
+          update();
+        }, { threshold: 0 }).observe(hero);
+      }
+    }());
+
+    /* === COUNTERS MODULE (Phase 4 — 04-03) === */
+    (function () {
+      if (REDUCED_MOTION) return;
+
+      var stats = document.querySelector('.hero__stats');
+      if (!stats || typeof IntersectionObserver === 'undefined') return;
+
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function animateCounter(el) {
+        var raw = el.textContent.trim();
+        var prefix = raw.match(/^[^\d]*/)[0];
+        var suffix = raw.match(/[^\d]*$/)[0];
+        var target = parseInt(raw.replace(/\D/g, ''), 10);
+        if (isNaN(target)) return;
+
+        var duration = 1200;
+        var start = null;
+
+        function step(ts) {
+          if (!start) start = ts;
+          var elapsed = ts - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var value = Math.round(easeOutCubic(progress) * target);
+          el.textContent = prefix + value + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      var triggered = false;
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting && !triggered) {
+          triggered = true;
+          var numbers = stats.querySelectorAll('.hero__stat-number');
+          numbers.forEach(function (el) { animateCounter(el); });
+        }
+      }, { threshold: 0.5 }).observe(stats);
+    }());
+
+    /* === PARALLAX MODULE (Phase 4 — 04-03) === */
+    (function () {
+      if (REDUCED_MOTION) return;
+
+      var content = document.querySelector('.hero__content');
+      if (!content) return;
+
+      var FACTOR = 0.1;
+
+      window.addEventListener('scroll', function () {
+        var offset = window.scrollY * FACTOR;
+        content.style.transform = 'translateY(' + offset + 'px)';
+      }, { passive: true });
+    }());
+
+    /* === FAQ MODULE (Phase 9) === */
+    (function () {
+      var triggers = document.querySelectorAll('.faq__trigger');
+      if (!triggers.length) return;
+
+      /* Remove hidden attrs — CSS handles visibility; aria-hidden for screen readers */
+      triggers.forEach(function (trigger) {
+        var panelId = trigger.getAttribute('aria-controls');
+        var panel = document.getElementById(panelId);
+        if (panel) {
+          panel.removeAttribute('hidden');
+          panel.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      function openItem(trigger) {
+        var panelId = trigger.getAttribute('aria-controls');
+        var panel = document.getElementById(panelId);
+        if (!panel) return;
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.removeAttribute('aria-hidden');
+        panel.classList.add('is-open');
+      }
+
+      function closeItem(trigger) {
+        var panelId = trigger.getAttribute('aria-controls');
+        var panel = document.getElementById(panelId);
+        if (!panel) return;
+        trigger.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+        panel.classList.remove('is-open');
+      }
+
+      function closeAll() {
+        triggers.forEach(function (t) { closeItem(t); });
+      }
+
+      /* Estado inicial: primeiro item aberto */
+      openItem(triggers[0]);
+
+      triggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+          closeAll();
+          if (!isOpen) {
+            openItem(trigger);
+          }
+        });
+      });
+    }());
+
+    /* === SCROLL-REVEAL MODULE (Phase 11 — ANIM-01, ANIM-02, ANIM-07) === */
+    (function () {
+      /* Accessibility: if reduced motion, immediately show all reveal elements */
+      if (REDUCED_MOTION) {
+        document.querySelectorAll('.reveal, .reveal-group > *').forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+        return;
+      }
+
+      /* Step 1: Stagger — inject transition-delay on .reveal-group direct children */
+      /* This runs before observing so delays are set before any intersection fires */
+      document.querySelectorAll('.reveal-group').forEach(function (group) {
+        Array.from(group.children).forEach(function (child, i) {
+          child.style.transitionDelay = (i * 100) + 'ms';
+          /* Note: delay is permanent on element, but .is-visible is never removed, */
+          /* so no cleanup needed. ANIM-02: fire-once via unobserve. */
+        });
+      });
+
+      /* Step 2: Create single shared observer for all .reveal targets */
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); /* ANIM-02: each element animates once only */
+        });
+      }, { threshold: 0.12 }); /* ANIM-01: fixed threshold from CONTEXT.md */
+
+      /* Step 3: Observe all .reveal elements AND all .reveal-group direct children */
+      /* .reveal elements = section titles, subtitles, video-container, pricing-card, faq__accordion */
+      /* .reveal-group children = individual cards/steps within grid containers */
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        observer.observe(el);
+      });
+      document.querySelectorAll('.reveal-group > *').forEach(function (el) {
+        observer.observe(el);
+      });
+    }());
+
+    /* WA link centralization — CONV-01 */
+    (function () {
+      document.querySelectorAll('a[href*="wa.me/"]').forEach(function (link) {
+        var url = new URL(link.href);
+        url.pathname = '/' + APP_CONFIG.whatsappNumber;
+        link.href = url.toString();
+      });
+    }());
+  </script>
+</body>
+</html>
